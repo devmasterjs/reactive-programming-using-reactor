@@ -7,11 +7,13 @@ import reactor.core.publisher.Mono;
 public class FluxAndMonoGeneratorService {
 
     public Flux<String> namesFlux() {
-        return Flux.fromIterable(List.of("alex", "ben", "chloe")); // db or a remote service call
+        return Flux.fromIterable(List.of("alex", "ben", "chloe")) // db or a remote service call
+                .log();
     }
 
     public Mono<String> nameMono() {
-        return Mono.just("alex");
+        return Mono.just("alex")
+                .log();
     }
 
     public static void main(String[] args) {
